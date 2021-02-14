@@ -1,0 +1,7 @@
+[gd_resource type="CubeMesh" load_steps=2 format=2]
+
+[ext_resource path="res://scenes/rooms/helpers/black.material" type="Material" id=1]
+
+[resource]
+material = ExtResource( 1 )
+size = Vector3( 11.9, 3.9, 0.1 )

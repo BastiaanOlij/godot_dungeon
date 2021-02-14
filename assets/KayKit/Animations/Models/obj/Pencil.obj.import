@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Pencil.obj-1abb5063623555875c51fa3528a59f36.mesh"
+
+[deps]
+
+files=[ "res://.import/Pencil.obj-1abb5063623555875c51fa3528a59f36.mesh" ]
+
+source_file="res://assets/KayKit/Animations/Models/obj/Pencil.obj"
+dest_files=[ "res://.import/Pencil.obj-1abb5063623555875c51fa3528a59f36.mesh", "res://.import/Pencil.obj-1abb5063623555875c51fa3528a59f36.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

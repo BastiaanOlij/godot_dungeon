@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/rooms/Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/tileBrickA_large.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://scenes/rooms/helpers/back_large.tres" type="CubeMesh" id=3]
+[ext_resource path="res://scenes/rooms/helpers/back.tres" type="CubeMesh" id=4]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/wallSingle.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/wallSingle_corner.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://scenes/rooms/objects/WallTorch.tscn" type="PackedScene" id=7]
+
+[node name="Room" instance=ExtResource( 1 )]
+open_sides = 13
+
+[node name="tileBrickA_large1" type="MeshInstance" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="tileBrickA_large2" type="MeshInstance" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="tileBrickA_large3" type="MeshInstance" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="tileBrickA_large4" type="MeshInstance" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle1" type="MeshInstance" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -6 )
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle2" type="MeshInstance" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -6 )
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle_corner1" type="MeshInstance" parent="." index="7"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 1, -6 )
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle_corner2" type="MeshInstance" parent="." index="8"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 1, 6 )
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle_corner3" type="MeshInstance" parent="." index="9"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 6, 1, 6 )
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+
+[node name="wallSingle_corner4" type="MeshInstance" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -6 )
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+
+[node name="back01" type="MeshInstance" parent="." index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 6 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back02" type="MeshInstance" parent="." index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 6 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back03" type="MeshInstance" parent="." index="13"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 3, -5 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back04" type="MeshInstance" parent="." index="14"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 3, 5 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back05" type="MeshInstance" parent="." index="15"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 3, -5 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back06" type="MeshInstance" parent="." index="16"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 3, 5 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="back07" type="MeshInstance" parent="." index="17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="WallTorch" parent="." index="19" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.25927 )

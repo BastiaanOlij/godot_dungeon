@@ -1,0 +1,85 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/BasePose.fbx" type="PackedScene" id=1]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Idle.anim" type="Animation" id=2]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Walk.anim" type="Animation" id=3]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Run.anim" type="Animation" id=4]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Attack(1h).anim" type="Animation" id=5]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Shooting(2h).anim" type="Animation" id=6]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Wave.anim" type="Animation" id=7]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Jump.anim" type="Animation" id=8]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Shoot(1h).anim" type="Animation" id=9]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Shoot(2h).anim" type="Animation" id=10]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Shooting(1h).anim" type="Animation" id=11]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Hop.anim" type="Animation" id=12]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/LayingDownIdle.anim" type="Animation" id=13]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Climbing.anim" type="Animation" id=14]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Defeat.anim" type="Animation" id=15]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/HeavyAttack.anim" type="Animation" id=16]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Cheer.anim" type="Animation" id=17]
+[ext_resource path="res://assets/KayKit/Animations/Animations/Single Animations/Block.anim" type="Animation" id=18]
+
+[node name="AnimationRig" instance=ExtResource( 1 )]
+
+[node name="KayKit Animated Character" parent="RootNode" index="0"]
+transform = Transform( 100, 5.96046e-05, 1.34359e-05, -1.34359e-05, -7.15256e-05, 100, 5.96047e-05, -100, -7.15256e-05, 0, 0, 0 )
+
+[node name="BodyBone" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="1"]
+transform = Transform( 1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0 )
+bone_name = "Body_1"
+
+[node name="Head" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="2"]
+transform = Transform( 1, 1.97636e-17, -8.81306e-19, -8.81298e-19, -3.57628e-07, -1, -1.97636e-17, 1, -3.57628e-07, 0, -2.54487e-09, 0.00711598 )
+bone_name = "Head_1"
+
+[node name="HeadEnd" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="3"]
+transform = Transform( 1, 1.97636e-17, -8.81306e-19, -8.81298e-19, -3.57628e-07, -1, -1.97636e-17, 1, -3.57628e-07, 1.76744e-19, -5.7431e-09, 0.0160589 )
+bone_name = "Head_end_1"
+
+[node name="LeftArm" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="4"]
+transform = Transform( 1.07288e-06, 0.471936, -0.881633, 1, -1.46639e-07, 1.12245e-06, 3.72529e-07, -0.881633, -0.471935, 0.0014, -2.47335e-09, 0.00691598 )
+bone_name = "armLeft_1"
+
+[node name="LeftHandSlot" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="5"]
+transform = Transform( -1, -1.1854e-06, 5.96046e-07, 1.05879e-06, -1, -4.17808e-07, 5.96046e-07, -2.39301e-07, 1, 0.004, -3.28122e-09, 0.00205887 )
+bone_name = "handSlotLeft_1"
+
+[node name="LeftHandSlotEnd" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="6"]
+transform = Transform( -1, -1.1854e-06, 5.96046e-07, 1.05879e-06, -1, -4.17808e-07, 5.96046e-07, -2.39301e-07, 1, 0.00399999, -0.00500001, 0.00205886 )
+bone_name = "handSlotLeft_end_1"
+
+[node name="RightArm" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="7"]
+transform = Transform( 1.16489e-06, -0.471936, -0.881633, 1, 8.66639e-07, 8.89205e-07, 3.38386e-07, -0.881633, 0.471935, -0.0014, -2.47335e-09, 0.00691598 )
+bone_name = "armRight_1"
+
+[node name="RightHandSlot" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="8"]
+transform = Transform( -1, -1.12329e-06, -4.47035e-07, 1.10354e-06, -1, -6.57335e-07, -5.36442e-07, -6.61938e-07, 1, -0.004, 2.01012e-09, 0.00205887 )
+bone_name = "handSlotRight_1"
+
+[node name="RightHandSlotEnd" type="BoneAttachment" parent="RootNode/KayKit Animated Character" index="9"]
+transform = Transform( -1, -1.12329e-06, -4.47035e-07, 1.10354e-06, -1, -6.57335e-07, -5.36442e-07, -6.61938e-07, 1, -0.004, -0.005, 0.00205886 )
+bone_name = "handSlotRight_end_1"
+
+[node name="PrototypePete" parent="RootNode" index="1"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+visible = false
+
+[node name="AnimationPlayer" parent="RootNode" index="2"]
+autoplay = "Idle"
+anims/Attack(1h) = ExtResource( 5 )
+anims/Block = ExtResource( 18 )
+anims/Cheer = ExtResource( 17 )
+anims/Climbing = ExtResource( 14 )
+anims/Defeat = ExtResource( 15 )
+anims/HeavyAttack = ExtResource( 16 )
+anims/Hop = ExtResource( 12 )
+anims/Idle = ExtResource( 2 )
+anims/Jump = ExtResource( 8 )
+anims/LayingDownIdle = ExtResource( 13 )
+anims/Run = ExtResource( 4 )
+anims/Shoot(1h) = ExtResource( 9 )
+anims/Shoot(2h) = ExtResource( 10 )
+anims/Shooting(1h) = ExtResource( 11 )
+anims/Shooting(2h) = ExtResource( 6 )
+anims/Walk = ExtResource( 3 )
+anims/Wave = ExtResource( 7 )
