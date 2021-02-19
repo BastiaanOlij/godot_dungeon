@@ -12,6 +12,7 @@
 
 [node name="Room" instance=ExtResource( 1 )]
 open_sides = 14
+weight = 5
 
 [node name="tileBrickA_large1" type="MeshInstance" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3 )

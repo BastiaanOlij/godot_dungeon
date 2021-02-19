@@ -24,6 +24,10 @@ config/name="Dungeon"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalState="*res://scripts/global_state.gd"
+
 [importer_defaults]
 
 scene={
@@ -1081,4 +1085,5 @@ scene={
 
 [rendering]
 
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"

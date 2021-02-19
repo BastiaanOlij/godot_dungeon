@@ -1,27 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/rooms/Room00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maze.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/characters/Mage.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://scenes/characters/Knight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/StoneDark.material" type="Material" id=7]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Stone.material" type="Material" id=8]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Torch.material" type="Material" id=9]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/BrownDark.material" type="Material" id=10]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Metal.material" type="Material" id=11]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Brown.material" type="Material" id=12]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Beige.material" type="Material" id=13]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Black.material" type="Material" id=14]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Blue.material" type="Material" id=15]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/BlueDark.material" type="Material" id=16]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
-ambient_light_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.0
 
 [node name="Main" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Maze" parent="." instance=ExtResource( 2 )]
+fog_of_war_materials = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
 
 [node name="Room" parent="Maze" instance=ExtResource( 1 )]
 
-[node name="Mage" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
-
-[node name="CamPivot" type="Spatial" parent="Mage"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
-
-[node name="Camera" type="Camera" parent="Mage/CamPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="PlayerCharacters" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="Mage" parent="PlayerCharacters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+
+[node name="CamPivot" type="Spatial" parent="PlayerCharacters/Mage"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="PlayerCharacters/Mage/CamPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
+
+[node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
