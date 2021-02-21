@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/torchWall.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Torch.material" type="Material" id=2]
+[ext_resource path="res://scenes/rooms/objects/WallTorch.gd" type="Script" id=3]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.125926, 0.311111, 0.503704, 1 )
@@ -30,7 +31,89 @@ color_ramp = SubResource( 2 )
 material = ExtResource( 2 )
 size = Vector2( 0.1, 0.1 )
 
+[sub_resource type="SphereShape" id=7]
+radius = 10.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "LightOff"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Torch/Light/OmniLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Torch/Light/OmniLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Torch/Particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "LightOn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Torch/Light/OmniLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Torch/Light/OmniLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Torch/Particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="WallTorch" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Torch" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
@@ -45,12 +128,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00506246, 0.99877, 0.671075 
 
 [node name="OmniLight" type="OmniLight" parent="Torch/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151892, 0.0402368 )
+visible = false
+light_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.2
 omni_range = 15.0
 
 [node name="Particles" type="Particles" parent="Torch"]
 transform = Transform( 1, 0, 0, 0, 0.970156, -0.242481, 0, 0.242481, 0.970156, 0, 0.714321, 0.584865 )
+emitting = false
 amount = 15
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 6 )
+
+[node name="PlayerDetect" type="Area" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDetect"]
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LightOff = SubResource( 8 )
+anims/LightOn = SubResource( 9 )
+
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]

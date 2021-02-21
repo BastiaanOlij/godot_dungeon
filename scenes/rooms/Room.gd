@@ -10,6 +10,6 @@ func _ready():
 	# our guide is just for development
 	$Guide.visible = false
 
-func _on_Area_body_entered(body):
+func _on_PlayerDetector_body_entered(body):
 	# print("Hello " + body.name)
 	emit_signal("character_entered_room", self)

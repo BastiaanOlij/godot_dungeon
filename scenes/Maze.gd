@@ -2,27 +2,43 @@ extends Spatial
 
 signal open_sides_changed(new_sides)
 
-export (Array, ShaderMaterial) var fog_of_war_materials = Array()
+export (String, DIR) var fog_of_war_material_folder
 export (float) var fog_of_war_distance = 15.0
 export (float) var fog_of_war_rim = 10.0
+export var max_visible_distance = 40.0
+
+export (String, DIR) var rooms_folder
 
 onready var global_state = get_node("/root/GlobalState")
 
 var maze : Dictionary
+var fog_of_war_materials : Array = Array()
 
 var expand_sides : Array = [ 
-	Vector2(-1, 0),
+	Vector2(-1,  0),
 	Vector2(-1, -1),
-	Vector2(0, -1),
-	Vector2(1, -1),
-	Vector2(1, 0),
-	Vector2(1, 1),
-	Vector2(0, 1), 
-	Vector2(-1, 1), 
-	Vector2(-2, 0),
-	Vector2(0, -2),
-	Vector2(2, 0),
-	Vector2(0, 2),
+	Vector2( 0, -1),
+	Vector2( 1, -1),
+	Vector2( 1,  0),
+	Vector2( 1,  1),
+	Vector2( 0,  1), 
+	Vector2(-1,  1), 
+	Vector2(-2,  0),
+	Vector2(-2, -1),
+	Vector2(-2, -2),
+	Vector2(-1, -2),
+	Vector2( 0, -2),
+	Vector2( 1, -2),
+	Vector2( 2, -2),
+	Vector2( 2, -1),
+	Vector2( 2,  0),
+	Vector2( 2,  1),
+	Vector2( 2,  2),
+	Vector2( 1,  2),
+	Vector2( 0,  2),
+	Vector2(-1,  2),
+	Vector2(-2,  2),
+	Vector2(-2,  1),
 ]
 
 var check_sides : Array = [ Vector2(-1, 0), Vector2(0, -1), Vector2(1, 0), Vector2(0, 1) ]
@@ -30,7 +46,6 @@ var rev_bits : Array = [ 4, 8, 1, 2 ]
 var room_types : Array = Array()
 
 var open_sides = 0
-var max_distance = 40.0
 
 func update_visibility():
 	var positions = global_state.get_positions(true, false)
@@ -38,7 +53,7 @@ func update_visibility():
 		var is_visible = false
 		var room_pos = room.global_transform.origin
 		for position in positions:
-			if (room_pos - position).length() < max_distance:
+			if (room_pos - position).length() < max_visible_distance:
 				is_visible = true
 
 		if room.visible != is_visible:
@@ -123,9 +138,30 @@ func _add_entry(room):
 	room.connect("character_entered_room", self, "character_entered_room")
 
 func _ready():
-	# load our room scenes
 	var dir = Directory.new()
-	if dir.open("res://scenes/rooms") == OK:
+	
+	# load the material for which we need to apply fog of war 
+	if dir.open(fog_of_war_material_folder) == OK:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != '':
+			if dir.current_is_dir():
+				pass
+			elif !filename.ends_with('.material'):
+				pass
+			else:
+				var material = load(fog_of_war_material_folder+"/"+filename)
+				if material is ShaderMaterial:
+					fog_of_war_materials.push_back(material)
+				else:
+					print("Can't add: " + fog_of_war_material_folder+"/"+filename)
+			
+			filename = dir.get_next()
+		
+		dir.list_dir_end()
+	
+	# load our room scenes
+	if dir.open(rooms_folder) == OK:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while filename != '':
@@ -135,7 +171,7 @@ func _ready():
 				pass
 			elif filename != 'Room.tscn':
 				var entry : Dictionary = Dictionary()
-				var room = load("res://scenes/rooms/" + filename)
+				var room = load(rooms_folder + "/" + filename)
 				entry['roomscene'] = room
 				# need to find a less wasteful way of doing this..
 				var temp = room.instance()
@@ -145,6 +181,7 @@ func _ready():
 				room_types.push_back(entry)
 			
 			filename = dir.get_next()
+		dir.list_dir_end()
 	
 	# lets check out existing tiles
 	for child in get_children():

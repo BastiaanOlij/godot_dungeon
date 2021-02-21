@@ -1,20 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/rooms/Room00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/rooms/dungeon1/Room00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Maze.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/characters/Mage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://scenes/characters/Knight.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/StoneDark.material" type="Material" id=7]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Stone.material" type="Material" id=8]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Torch.material" type="Material" id=9]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/BrownDark.material" type="Material" id=10]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Metal.material" type="Material" id=11]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Brown.material" type="Material" id=12]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Beige.material" type="Material" id=13]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Black.material" type="Material" id=14]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Blue.material" type="Material" id=15]
-[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/BlueDark.material" type="Material" id=16]
+[ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/Glass.material" type="Material" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -25,7 +16,9 @@ ambient_light_sky_contribution = 0.0
 script = ExtResource( 4 )
 
 [node name="Maze" parent="." instance=ExtResource( 2 )]
-fog_of_war_materials = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
+fog_of_war_material_folder = "res://assets/KayKit/Dungeon Pack/Models/gltf"
+fog_of_war_distance = 25.0
+rooms_folder = "res://scenes/rooms/dungeon1"
 
 [node name="Room" parent="Maze" instance=ExtResource( 1 )]
 
@@ -37,6 +30,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Mage" parent="PlayerCharacters" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="CamPivot" type="Spatial" parent="PlayerCharacters/Mage"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
@@ -46,3 +41,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
 
 [node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = ExtResource( 6 )
