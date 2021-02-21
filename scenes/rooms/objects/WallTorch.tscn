@@ -128,15 +128,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00506246, 0.99877, 0.671075 
 
 [node name="OmniLight" type="OmniLight" parent="Torch/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151892, 0.0402368 )
-visible = false
-light_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.2
 omni_range = 15.0
 
 [node name="Particles" type="Particles" parent="Torch"]
 transform = Transform( 1, 0, 0, 0, 0.970156, -0.242481, 0, 0.242481, 0.970156, 0, 0.714321, 0.584865 )
-emitting = false
 amount = 15
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 6 )
@@ -153,3 +150,4 @@ anims/LightOn = SubResource( 9 )
 
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

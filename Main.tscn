@@ -16,8 +16,6 @@ ambient_light_sky_contribution = 0.0
 script = ExtResource( 4 )
 
 [node name="Maze" parent="." instance=ExtResource( 2 )]
-fog_of_war_material_folder = "res://assets/KayKit/Dungeon Pack/Models/gltf"
-fog_of_war_distance = 25.0
 rooms_folder = "res://scenes/rooms/dungeon1"
 
 [node name="Room" parent="Maze" instance=ExtResource( 1 )]
@@ -37,7 +35,7 @@ collision_mask = 1
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="PlayerCharacters/Mage/CamPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25 )
 
 [node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )

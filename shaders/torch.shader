@@ -14,15 +14,6 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-uniform float max_distance = 20.0;
-uniform float rim_size = 5.0;
-uniform vec3 player_1 = vec3(0,0,0);
-uniform vec3 player_2 = vec3(0,0,0);
-uniform vec3 player_3 = vec3(0,0,0);
-uniform vec3 player_4 = vec3(0,0,0);
-
-varying vec3 world_pos;
-
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
 	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
@@ -39,22 +30,9 @@ void vertex() {
 	}	UV /= vec2(h_frames, v_frames);
 	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor(particle_frame / h_frames) / v_frames);
 	
-	
-	world_pos = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
-	float closest = 100.0;
-	closest = min(closest, length(player_1 - world_pos));
-	closest = min(closest, length(player_2 - world_pos));
-	closest = min(closest, length(player_3 - world_pos));
-	closest = min(closest, length(player_4 - world_pos));
-	
-	float factor = (max_distance - closest) / rim_size;
-	if (factor < -1.0) discard;
-	
-	factor = clamp(factor, 0.0, 1.0);
-	
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	albedo_tex *= COLOR;
@@ -62,5 +40,5 @@ void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
-	ALPHA = albedo.a * albedo_tex.a * factor;
+	ALPHA = albedo.a * albedo_tex.a;
 }

@@ -2,9 +2,6 @@ extends Spatial
 
 signal open_sides_changed(new_sides)
 
-export (String, DIR) var fog_of_war_material_folder
-export (float) var fog_of_war_distance = 15.0
-export (float) var fog_of_war_rim = 10.0
 export var max_visible_distance = 40.0
 
 export (String, DIR) var rooms_folder
@@ -48,6 +45,7 @@ var room_types : Array = Array()
 var open_sides = 0
 
 func update_visibility():
+	# Whenever our player enters a new room, check if we can hide rooms we don't need to render to help the culling a bit.
 	var positions = global_state.get_positions(true, false)
 	for room in get_children():
 		var is_visible = false
@@ -140,26 +138,6 @@ func _add_entry(room):
 func _ready():
 	var dir = Directory.new()
 	
-	# load the material for which we need to apply fog of war 
-	if dir.open(fog_of_war_material_folder) == OK:
-		dir.list_dir_begin()
-		var filename = dir.get_next()
-		while filename != '':
-			if dir.current_is_dir():
-				pass
-			elif !filename.ends_with('.material'):
-				pass
-			else:
-				var material = load(fog_of_war_material_folder+"/"+filename)
-				if material is ShaderMaterial:
-					fog_of_war_materials.push_back(material)
-				else:
-					print("Can't add: " + fog_of_war_material_folder+"/"+filename)
-			
-			filename = dir.get_next()
-		
-		dir.list_dir_end()
-	
 	# load our room scenes
 	if dir.open(rooms_folder) == OK:
 		dir.list_dir_begin()
@@ -186,14 +164,3 @@ func _ready():
 	# lets check out existing tiles
 	for child in get_children():
 		_add_entry(child)
-
-func _process(delta):
-	var positions = global_state.get_positions(true, false)
-	for mat in fog_of_war_materials:
-		mat.set_shader_param("max_distance", fog_of_war_distance)
-		mat.set_shader_param("rim_size", fog_of_war_rim)
-		for i in 4:
-			if i < positions.size():
-				mat.set_shader_param("player_"+str(i+1), positions[i])
-			else:
-				mat.set_shader_param("player_"+str(i+1), positions[0])
