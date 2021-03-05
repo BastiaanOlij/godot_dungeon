@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/characters/enemy_characters/EnemyCharacter.gd" type="Script" id=2]
+
+[node name="EnemyCharacter" instance=ExtResource( 1 )]
+collision_layer = 2147483652
+script = ExtResource( 2 )

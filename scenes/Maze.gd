@@ -1,12 +1,13 @@
 extends Spatial
 
+class_name Maze
+
 signal open_sides_changed(new_sides)
+signal finished_init_maze()
 
 export var max_visible_distance = 40.0
 
 export (String, DIR) var rooms_folder
-
-onready var global_state = get_node("/root/GlobalState")
 
 var maze : Dictionary
 var fog_of_war_materials : Array = Array()
@@ -46,7 +47,7 @@ var open_sides = 0
 
 func update_visibility():
 	# Whenever our player enters a new room, check if we can hide rooms we don't need to render to help the culling a bit.
-	var positions = global_state.get_positions(true, false)
+	var positions = GlobalState.get_positions(true, false)
 	for room in get_children():
 		var is_visible = false
 		var room_pos = room.global_transform.origin
@@ -57,8 +58,8 @@ func update_visibility():
 		if room.visible != is_visible:
 			room.visible = is_visible
 
-func character_entered_room(room):
-	var pos : Vector2 = Vector2(round(room.transform.origin.x / 12.0), round(room.transform.origin.z / 12.0))
+func character_entered_room(p_room : Room):
+	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
 	
 	for side in expand_sides:
 		var side_pos = pos + side
@@ -113,16 +114,16 @@ func character_entered_room(room):
 	
 	update_visibility();
 
-func _add_entry(room):
+func _add_entry(p_room : Room):
 	var entry : Dictionary = Dictionary()
-	var pos : Vector2 = Vector2(round(room.transform.origin.x / 12.0), round(room.transform.origin.z / 12.0))
-	entry['node'] = room
-	entry['open_sides'] = room.open_sides
+	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
+	entry['node'] = p_room
+	entry['open_sides'] = p_room.open_sides
 	
 	maze[pos] = entry
 	for i in check_sides.size():
 		var bit = int(pow(2, i))
-		if ((room.open_sides & bit) == bit):
+		if ((p_room.open_sides & bit) == bit):
 			# check our adjoining tile
 			var side_pos = pos + check_sides[i]
 			if maze.has(side_pos):
@@ -133,7 +134,15 @@ func _add_entry(room):
 				open_sides = open_sides + 1
 			emit_signal("open_sides_changed", open_sides)
 	
-	room.connect("character_entered_room", self, "character_entered_room")
+	p_room.connect("character_entered_room", self, "character_entered_room")
+
+func get_neighbouring_room(p_room : Room, p_side : Vector2):
+	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
+	pos = pos + p_side
+	if maze.has(pos):
+		return maze[pos]['node']
+	else:
+		return null
 
 func _ready():
 	var dir = Directory.new()
@@ -164,3 +173,5 @@ func _ready():
 	# lets check out existing tiles
 	for child in get_children():
 		_add_entry(child)
+	
+	emit_signal("finished_init_maze")

@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_knightBody.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_knightArmLeft.mesh" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_knightArmRight.mesh" type="ArrayMesh" id=5]
-[ext_resource path="res://scenes/characters/Character.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/characters/player_characters/PlayerCharacter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/dagger_uncommon.mesh" type="ArrayMesh" id=7]
 
 [node name="Knight" instance=ExtResource( 6 )]

@@ -32,7 +32,7 @@ material = ExtResource( 2 )
 size = Vector2( 0.1, 0.1 )
 
 [sub_resource type="SphereShape" id=7]
-radius = 10.0
+radius = 12.5
 
 [sub_resource type="Animation" id=8]
 resource_name = "LightOff"
@@ -128,6 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00506246, 0.99877, 0.671075 
 
 [node name="OmniLight" type="OmniLight" parent="Torch/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151892, 0.0402368 )
+light_cull_mask = 4294443007
 shadow_enabled = true
 shadow_bias = 0.2
 omni_range = 15.0
@@ -147,7 +148,6 @@ shape = SubResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LightOff = SubResource( 8 )
 anims/LightOn = SubResource( 9 )
-
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -10,12 +10,36 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "Cell",
+"language": "GDScript",
+"path": "res://scenes/rooms/Cell.gd"
+}, {
+"base": "Spatial",
 "class": "Character",
 "language": "GDScript",
 "path": "res://scenes/characters/Character.gd"
+}, {
+"base": "Spatial",
+"class": "Maze",
+"language": "GDScript",
+"path": "res://scenes/Maze.gd"
+}, {
+"base": "Character",
+"class": "PlayerCharacter",
+"language": "GDScript",
+"path": "res://scenes/characters/player_characters/PlayerCharacter.gd"
+}, {
+"base": "Spatial",
+"class": "Room",
+"language": "GDScript",
+"path": "res://scenes/rooms/Room.gd"
 } ]
 _global_script_class_icons={
-"Character": ""
+"Cell": "",
+"Character": "",
+"Maze": "",
+"PlayerCharacter": "",
+"Room": ""
 }
 
 [application]
@@ -27,6 +51,12 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalState="*res://scripts/global_state.gd"
+MouseHandler="*res://scripts/mouse_handler.gd"
+AstarMaze="*res://scripts/astar.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "ridiculous_coding" )
 
 [importer_defaults]
 
@@ -1085,9 +1115,12 @@ scene={
 
 [layer_names]
 
+3d_render/layer_1="Environment"
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Friendly"
 3d_physics/layer_3="Enemy"
+3d_render/layer_20="UI"
+3d_physics/layer_20="UI"
 
 [rendering]
 

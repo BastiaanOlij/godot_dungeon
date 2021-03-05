@@ -74,6 +74,18 @@ mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 
+[node name="Cell02x01" parent="Grid" index="6"]
+visible = false
+
+[node name="Cell03x01" parent="Grid" index="12"]
+visible = false
+
+[node name="Cell04x01" parent="Grid" index="18"]
+visible = false
+
+[node name="Cell05x01" parent="Grid" index="24"]
+visible = false
+
 [node name="Back01" type="MeshInstance" parent="." index="12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 6 )
 mesh = ExtResource( 3 )
