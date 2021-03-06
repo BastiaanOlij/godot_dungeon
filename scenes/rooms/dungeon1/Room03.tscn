@@ -114,5 +114,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6 )
 mesh = ExtResource( 3 )
 material/0 = null
 
+[node name="Cell01x02" parent="Grid" index="1"]
+visible = false
+
+[node name="Cell01x03" parent="Grid" index="2"]
+visible = false
+
+[node name="Cell01x04" parent="Grid" index="3"]
+visible = false
+
+[node name="Cell01x05" parent="Grid" index="4"]
+visible = false
+
+[node name="Cell02x01" parent="Grid" index="6"]
+visible = false
+
+[node name="Cell03x01" parent="Grid" index="12"]
+visible = false
+
+[node name="Cell04x01" parent="Grid" index="18"]
+visible = false
+
+[node name="Cell05x01" parent="Grid" index="24"]
+visible = false
+
 [node name="WallTorch" parent="." index="20" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.28973 )

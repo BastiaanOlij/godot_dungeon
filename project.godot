@@ -54,10 +54,6 @@ GlobalState="*res://scripts/global_state.gd"
 MouseHandler="*res://scripts/mouse_handler.gd"
 AstarMaze="*res://scripts/astar.gd"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "ridiculous_coding" )
-
 [importer_defaults]
 
 scene={

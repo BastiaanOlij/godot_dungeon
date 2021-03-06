@@ -99,25 +99,37 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 3, 
 mesh = ExtResource( 2 )
 material/0 = null
 
+[node name="Cell02x03" parent="Grid" index="8"]
+visible = false
+
+[node name="Cell02x04" parent="Grid" index="9"]
+visible = false
+
+[node name="Cell04x03" parent="Grid" index="20"]
+visible = false
+
+[node name="Cell04x04" parent="Grid" index="21"]
+visible = false
+
 [node name="WallTorch01" parent="." index="18" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55394, 0, -5.26816 )
 
 [node name="tableMedium1" type="MeshInstance" parent="." index="19"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3 )
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="tableMedium2" type="MeshInstance" parent="." index="20"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3 )
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="tableMedium3" type="MeshInstance" parent="." index="21"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1 )
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="tableMedium4" type="MeshInstance" parent="." index="22"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 )
 mesh = ExtResource( 6 )
 material/0 = null
