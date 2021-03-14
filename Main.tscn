@@ -29,16 +29,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Mage" parent="PlayerCharacters" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="CameraRig" parent="PlayerCharacters/Mage" instance=ExtResource( 7 )]
 
 [node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 
 [connection signal="finished_init_maze" from="Maze" to="." method="_on_Maze_finished_init_maze"]

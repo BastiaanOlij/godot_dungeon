@@ -42,6 +42,10 @@ func next_turn():
 	emit_signal("next_turn", turn)
 
 func next_character():
+	# let our current character know it's no longer the current character
+	if current_character_node:
+		current_character_node.unset_current_character()
+	
 	# check if we've gotten our characters yet
 	if characters.size() == 0:
 		return 

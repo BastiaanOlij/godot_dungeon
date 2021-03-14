@@ -43,6 +43,9 @@ func cell_exited(p_cell : Cell):
 func became_current_character():
 	pass
 
+func unset_current_character():
+	pass
+
 func turn_state_changed(p_state : int):
 	pass
 

@@ -1,7 +1,77 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/player_characters/PlayerCharacter.gd" type="Script" id=2]
+[ext_resource path="res://scenes/characters/player_characters/Step.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/mux/number_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/mux/number_3.png" type="Texture" id=5]
+[ext_resource path="res://assets/mux/number_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/mux/number_5.png" type="Texture" id=7]
+[ext_resource path="res://assets/mux/number_4.png" type="Texture" id=8]
 
 [node name="PlayerCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+highlight_material_path = "res://shaders_and_materials/materials/highlight"
+
+[node name="KayKit Animated Character" parent="Pivot/AnimationRig/RootNode" index="0"]
+bones/0/bound_children = [  ]
+bones/1/bound_children = [  ]
+bones/2/bound_children = [  ]
+bones/3/bound_children = [  ]
+bones/4/bound_children = [  ]
+bones/5/bound_children = [  ]
+bones/6/bound_children = [  ]
+bones/7/bound_children = [  ]
+bones/8/bound_children = [  ]
+
+[node name="BodyBone" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="1"]
+transform = Transform( 1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0 )
+
+[node name="Head" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="2"]
+transform = Transform( 1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, -2.54487e-09, 0.00711598 )
+
+[node name="HeadEnd" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="3"]
+transform = Transform( 1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, -5.7431e-09, 0.0160589 )
+
+[node name="LeftArm" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="4"]
+transform = Transform( 1.07288e-06, 0.471936, -0.881633, 1, -1.46639e-07, 1.12245e-06, 3.72529e-07, -0.881633, -0.471935, 0.0014, -2.47335e-09, 0.00691598 )
+
+[node name="LeftHandSlot" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="5"]
+transform = Transform( -1, -1.1854e-06, 5.36442e-07, 1.05879e-06, -1, -3.40838e-07, 5.36442e-07, -1.62332e-07, 1, 0.004, -3.28122e-09, 0.00205887 )
+
+[node name="LeftHandSlotEnd" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="6"]
+transform = Transform( -1, -1.1854e-06, 5.36442e-07, 1.05879e-06, -1, -3.40838e-07, 5.36442e-07, -1.62332e-07, 1, 0.00399999, -0.00500001, 0.00205887 )
+
+[node name="RightArm" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="7"]
+transform = Transform( 1.19209e-06, -0.471936, -0.881633, 1, 8.96442e-07, 9.04106e-07, 3.57628e-07, -0.881633, 0.471935, -0.0014, -2.47335e-09, 0.00691598 )
+
+[node name="RightHandSlot" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="8"]
+transform = Transform( -1, -1.12069e-06, -4.76837e-07, 1.10094e-06, -1, -6.61676e-07, -5.96046e-07, -6.66279e-07, 1, -0.004, 2.46535e-09, 0.00205887 )
+
+[node name="RightHandSlotEnd" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character" index="9"]
+transform = Transform( -1, -1.12069e-06, -4.76837e-07, 1.10094e-06, -1, -6.61676e-07, -5.96046e-07, -6.66279e-07, 1, -0.004, -0.005, 0.00205886 )
+
+[node name="Path" type="Spatial" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+visible = false
+
+[node name="Step1" parent="Path" index="0" instance=ExtResource( 3 )]
+texture = ExtResource( 4 )
+
+[node name="Step2" parent="Path" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+texture = ExtResource( 6 )
+
+[node name="Step3" parent="Path" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+texture = ExtResource( 5 )
+
+[node name="Step4" parent="Path" index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+texture = ExtResource( 8 )
+
+[node name="Step5" parent="Path" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+texture = ExtResource( 7 )
+
+[editable path="Pivot/AnimationRig"]

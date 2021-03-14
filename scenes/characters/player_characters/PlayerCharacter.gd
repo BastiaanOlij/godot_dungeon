@@ -2,15 +2,41 @@ extends Character
 
 class_name PlayerCharacter
 
+export (String, DIR) var highlight_material_path
+
 var current_move_path : Array = Array()
 var moving = false;
 const move_speed = 0.25
 
+var mesh_instance_nodes : Array = Array()
+
 var ap = 0
+var is_current = false
+
+func _highlight_character():
+	for entry in mesh_instance_nodes:
+		var mesh_instance : MeshInstance = entry['node']
+		for i in mesh_instance.get_surface_material_count():
+			var active_material : Material = mesh_instance.get_active_material(i)
+			if entry['materials'].has(active_material):
+				mesh_instance.set_surface_material(i, entry['materials'][active_material])
 
 func became_current_character():
+	is_current = true
+	
 	# reset our turn points
 	ap = action_points
+	
+	_highlight_character()
+
+func unset_current_character():
+	is_current = false
+	$Path.visible = false
+	
+	for entry in mesh_instance_nodes:
+		var mesh_instance : MeshInstance = entry['node']
+		for i in mesh_instance.get_surface_material_count():
+			mesh_instance.set_surface_material(i, null)
 
 func turn_state_changed(p_state : int):
 	match p_state:
@@ -32,6 +58,7 @@ func perform_action():
 	match GlobalState.get_turn_state():
 		GlobalState.TurnState.TURN_MOVE:
 			moving = true
+			$Path.visible = false
 			print("Start move")
 			animation_player.play("Walk")
 
@@ -78,11 +105,68 @@ func _do_a_star(from_cell: Cell, to_cell : Cell):
 			to_cell.set_cell_status(Cell.CellStatus.CELL_STATUS_CAN_MOVE)
 			
 			# print(current_move_path)
+			
+			# hide spent action points
+			var i : int = 1
+			while i <= (action_points - ap):
+				var step = $Path.get_node("Step" + str(i))
+				step.visible = false
+				i = i + 1
+			
+			# show our path
 			for cell in current_move_path:
+				var step = $Path.get_node("Step" + str(i))
+				var pos = cell.global_transform.origin
+				step.global_transform.origin.x = pos.x
+				step.global_transform.origin.z = pos.z
+				step.visible = true
+				i = i +1
+				
+				# just for debugging..
 				cell.mark()
+			
+			# hide left over
+			while i <= 5:
+				var step = $Path.get_node("Step" + str(i))
+				step.visible = false
+				i = i + 1
+		
+			$Path.visible = true
 		else:
 			to_cell.set_cell_status(Cell.CellStatus.CELL_STATUS_CANT_MOVE)
+			$Path.visible = false
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if moving and anim_name == "Walk":
 		animation_player.play("Walk")
+
+func _find_mesh_instance_nodes(parent : Node):
+	var file : File = File.new()
+	
+	for child in parent.get_children():
+		if child is MeshInstance:
+			var mesh_instance : MeshInstance = child
+			var entry : Dictionary = Dictionary()
+			entry['node'] = mesh_instance
+			entry['materials'] = Dictionary()
+			
+			for i in mesh_instance.get_surface_material_count():
+				var active_material : Material = mesh_instance.get_active_material(i)
+				var path = active_material.resource_path
+				var file_name = highlight_material_path + "/" + path.get_file()
+				if file.file_exists(file_name):
+					var highlight_material : Material = load(file_name)
+					if highlight_material:
+						entry['materials'][active_material] = highlight_material
+			
+			if !entry['materials'].empty():
+				print(mesh_instance.name)
+				mesh_instance_nodes.push_back(entry)
+		
+		_find_mesh_instance_nodes(child)
+
+func _ready():
+	_find_mesh_instance_nodes(self)
+	
+	if is_current:
+		_highlight_character()

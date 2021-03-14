@@ -10,6 +10,17 @@
 
 [node name="Mage" instance=ExtResource( 1 )]
 
+[node name="KayKit Animated Character" parent="Pivot/AnimationRig/RootNode" index="0"]
+bones/0/bound_children = [  ]
+bones/1/bound_children = [  ]
+bones/2/bound_children = [  ]
+bones/3/bound_children = [  ]
+bones/4/bound_children = [  ]
+bones/5/bound_children = [  ]
+bones/6/bound_children = [  ]
+bones/7/bound_children = [  ]
+bones/8/bound_children = [  ]
+
 [node name="character_mageBody" type="MeshInstance" parent="Pivot/AnimationRig/RootNode/KayKit Animated Character/BodyBone" index="0"]
 transform = Transform( 0.01, 3.25261e-21, 9.24446e-35, -3.25261e-21, 0.01, 2.84217e-16, 0, -2.84217e-16, 0.01, 0, 0, 0 )
 mesh = ExtResource( 3 )
