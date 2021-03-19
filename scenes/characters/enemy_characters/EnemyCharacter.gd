@@ -1,5 +1,13 @@
 extends Character
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+export (int) var weight = 1
+
+#############################################################################
+# Character control
+
+func became_current_character():
+	# here we need to trigger our AI.. but we don't have any... so...
+	GlobalState.next_character()
+
+func unset_current_character():
+	pass

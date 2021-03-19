@@ -2,12 +2,15 @@ extends Spatial
 
 class_name Character
 
+signal action_points_changed(new_ap)
+
 export (bool) var is_player_controlled = true
 export (int) var action_points = 5
+export (int) var health_points = 5
 
 onready var tween_node : Tween = get_node("Tween")
-onready var animation_player : AnimationPlayer = get_node("Pivot/AnimationRig/RootNode/AnimationPlayer")
-var player_index = -1
+var player_index : int = -1
+var current_action_points : int = 0
 
 #############################################################################
 # Character status
@@ -37,6 +40,9 @@ func cell_exited(p_cell : Cell):
 
 		# print(name + " exited cell " + p_cell.name + ", now in " + str(_in_cells))
 
+func get_current_action_points() -> int:
+	return current_action_points
+
 #############################################################################
 # Character control
 
@@ -44,9 +50,6 @@ func became_current_character():
 	pass
 
 func unset_current_character():
-	pass
-
-func turn_state_changed(p_state : int):
 	pass
 
 func pointer_cell_entered(p_cell : Cell):
@@ -60,6 +63,3 @@ func perform_action():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_index = GlobalState.add_character(self)
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	pass

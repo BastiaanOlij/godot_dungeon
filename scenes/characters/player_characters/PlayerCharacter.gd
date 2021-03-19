@@ -4,13 +4,14 @@ class_name PlayerCharacter
 
 export (String, DIR) var highlight_material_path
 
+onready var animation_player : AnimationPlayer = get_node("Pivot/AnimationRig/RootNode/AnimationPlayer")
+
 var current_move_path : Array = Array()
 var moving = false;
 const move_speed = 0.25
 
 var mesh_instance_nodes : Array = Array()
 
-var ap = 0
 var is_current = false
 
 func _highlight_character():
@@ -25,8 +26,10 @@ func became_current_character():
 	is_current = true
 	
 	# reset our turn points
-	ap = action_points
+	current_action_points = action_points
+	emit_signal("action_points_changed", current_action_points)
 	
+	_do_a_star(_in_cell, GlobalState.get_current_cell())
 	_highlight_character()
 
 func unset_current_character():
@@ -38,15 +41,8 @@ func unset_current_character():
 		for i in mesh_instance.get_surface_material_count():
 			mesh_instance.set_surface_material(i, null)
 
-func turn_state_changed(p_state : int):
-	match p_state:
-		GlobalState.TurnState.TURN_MOVE:
-			_do_a_star(_in_cell, GlobalState.get_current_cell())
-
 func pointer_cell_entered(p_cell : Cell):
-	match GlobalState.get_turn_state():
-		GlobalState.TurnState.TURN_MOVE:
-			_do_a_star(_in_cell, p_cell)
+	_do_a_star(_in_cell, p_cell)
 
 func _move_character(new_pos : Vector3):
 	global_transform.origin = new_pos
@@ -55,42 +51,41 @@ func _rotate_character(new_rotation : float):
 	$Pivot.rotation.y = new_rotation
 
 func perform_action():
-	match GlobalState.get_turn_state():
-		GlobalState.TurnState.TURN_MOVE:
-			moving = true
-			$Path.visible = false
-			print("Start move")
-			animation_player.play("Walk")
+	moving = true
+	$Path.visible = false
+	print("Start move")
+	animation_player.play("Walk")
 
-			while !current_move_path.empty() and ap > 0:
-				var next_cell : Cell = current_move_path.pop_front()
-				ap = ap - 1
+	while !current_move_path.empty() and current_action_points > 0:
+		var next_cell : Cell = current_move_path.pop_front()
+		current_action_points = current_action_points - 1
+		emit_signal("action_points_changed", current_action_points)
 
-				# determine our move
-				var move_from = global_transform.origin
-				var move_to = next_cell.global_transform.origin
-				var delta_move = (move_to - move_from)
-				var distance = delta_move.length()
-				tween_node.interpolate_method(self, "_move_character", move_from, move_to, distance * move_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		# determine our move
+		var move_from = global_transform.origin
+		var move_to = next_cell.global_transform.origin
+		var delta_move = (move_to - move_from)
+		var distance = delta_move.length()
+		tween_node.interpolate_method(self, "_move_character", move_from, move_to, distance * move_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
-				var angle_from = $Pivot.rotation.y
-				var angle_to = Vector2(delta_move.x, delta_move.z).angle_to(Vector2(0, 1))
-				tween_node.interpolate_method(self, "_rotate_character", angle_from, angle_to, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		var angle_from = $Pivot.rotation.y
+		var angle_to = Vector2(delta_move.x, delta_move.z).angle_to(Vector2(0, 1))
+		tween_node.interpolate_method(self, "_rotate_character", angle_from, angle_to, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
-				# start our tween
-				tween_node.start()
+		# start our tween
+		tween_node.start()
 
-				# wait for our tween to finish
-				yield(tween_node, "tween_all_completed")
-			
-			print("Finished move")
+		# wait for our tween to finish
+		yield(tween_node, "tween_all_completed")
 
-			moving = false
-			if ap == 0:
-				GlobalState.next_turn_state()
-			else:
-				# init our next move
-				_do_a_star(_in_cell, GlobalState.get_current_cell())
+	print("Finished move")
+
+	moving = false
+	if current_action_points == 0:
+		GlobalState.next_character()
+	else:
+		# init our next move
+		_do_a_star(_in_cell, GlobalState.get_current_cell())
 
 func _do_a_star(from_cell: Cell, to_cell : Cell):
 	if moving:
@@ -99,7 +94,7 @@ func _do_a_star(from_cell: Cell, to_cell : Cell):
 		return
 	
 	if from_cell and to_cell:
-		current_move_path = AstarMaze.do_astar(from_cell, to_cell, ap)
+		current_move_path = AstarMaze.do_astar(from_cell, to_cell, current_action_points)
 	
 		if !current_move_path.empty():
 			to_cell.set_cell_status(Cell.CellStatus.CELL_STATUS_CAN_MOVE)
@@ -108,7 +103,7 @@ func _do_a_star(from_cell: Cell, to_cell : Cell):
 			
 			# hide spent action points
 			var i : int = 1
-			while i <= (action_points - ap):
+			while i <= (action_points - current_action_points):
 				var step = $Path.get_node("Step" + str(i))
 				step.visible = false
 				i = i + 1

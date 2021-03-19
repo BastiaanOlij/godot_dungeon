@@ -5,4 +5,6 @@
 
 [node name="EnemyCharacter" instance=ExtResource( 1 )]
 collision_layer = 2147483652
+collision_mask = 4
 script = ExtResource( 2 )
+is_player_controlled = false

@@ -1,26 +1,47 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/UI.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/pt_sans/pt_sans_24pt.tres" type="DynamicFont" id=2]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Turn" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 49.0
-margin_bottom = 19.0
+[node name="TurnState" type="Control" parent="."]
+margin_right = 35.0
+margin_bottom = 35.0
+
+[node name="Turn" type="Label" parent="TurnState"]
+margin_right = 74.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
 text = "Turn: 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="State" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 25.0
-margin_right = 45.0
-margin_bottom = 39.0
-text = "State"
+[node name="Player" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -79.0
+margin_right = 61.0
+
+[node name="AP" type="Label" parent="Player"]
+margin_right = 61.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "AP: 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="Player"]
+margin_top = 36.0
+margin_right = 61.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Player/Button" to="." method="_on_Button_pressed"]

@@ -1,23 +1,13 @@
 extends Node
 
-enum TurnState {
-	# TURN_PREPARE,
-	TURN_MOVE,
-	# TURN_ATTACK
-	TURN_MAX
-}
-
 signal next_turn(turn_no)
 signal next_character(character)
-signal next_state(state)
-
-const TURN_FIRST = TurnState.TURN_MOVE # Should be TurnState.TURN_PREPARE
+signal action_points_changed(action_points)
 
 var game_started = false
 var characters : Array = Array()
 var current_character : int = -1
 var turn : int = 1
-var turn_state : int = TURN_FIRST
 
 var current_character_node : Character = null
 
@@ -25,11 +15,10 @@ var current_character_node : Character = null
 # Handling turns
 
 func reset_level():
+	game_started = false
 	characters = Array()
 	current_character = -1
 	turn = 1
-	turn_state = TURN_FIRST
-	game_started = false
 
 func start_level():
 	game_started = true
@@ -40,6 +29,9 @@ func next_turn():
 	# init our next turn.....
 	
 	emit_signal("next_turn", turn)
+
+func get_current_character() -> Character:
+	return current_character_node
 
 func next_character():
 	# let our current character know it's no longer the current character
@@ -58,22 +50,8 @@ func next_character():
 	# let our character know it's now current
 	current_character_node = characters[current_character]
 	current_character_node.became_current_character()
-	current_character_node.turn_state_changed(turn_state)
 	
 	emit_signal("next_character", current_character_node)
-
-func next_turn_state():
-	turn_state = turn_state + 1
-	if turn_state == TurnState.TURN_MAX:
-		turn_state = TURN_FIRST
-		next_character()
-	elif current_character_node:
-		current_character_node.turn_state_changed(turn_state)
-	
-	emit_signal("next_state", turn_state)
-
-func get_turn_state() -> int:
-	return turn_state
 
 ##############################################################################
 # handling input

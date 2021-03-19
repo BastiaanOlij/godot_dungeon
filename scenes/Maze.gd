@@ -8,9 +8,12 @@ signal finished_init_maze()
 export var max_visible_distance = 40.0
 
 export (String, DIR) var rooms_folder
+export (String, DIR) var enemy_folder
+export (NodePath) var enemy_container
+
+onready var enemy_container_node = get_node(enemy_container) if enemy_container else null
 
 var maze : Dictionary
-var fog_of_war_materials : Array = Array()
 
 var expand_sides : Array = [ 
 	Vector2(-1,  0),
@@ -42,6 +45,7 @@ var expand_sides : Array = [
 var check_sides : Array = [ Vector2(-1, 0), Vector2(0, -1), Vector2(1, 0), Vector2(0, 1) ]
 var rev_bits : Array = [ 4, 8, 1, 2 ]
 var room_types : Array = Array()
+var enemy_types : Array = Array()
 
 var open_sides = 0
 
@@ -111,6 +115,7 @@ func character_entered_room(p_room : Room):
 			add_child(new_room)
 			
 			_add_entry(new_room)
+			_spawn_enemies(new_room)
 	
 	update_visibility();
 
@@ -135,6 +140,23 @@ func _add_entry(p_room : Room):
 			emit_signal("open_sides_changed", open_sides)
 	
 	p_room.connect("character_entered_room", self, "character_entered_room")
+
+func _spawn_enemies(p_room : Room):
+	if enemy_types.size() == 0:
+		return
+
+	if !enemy_container_node:
+		return
+	var container_inverse : Transform = enemy_container_node.global_transform.inverse()
+
+	for spawn_point in p_room.get_node("SpawnPoints").get_children():
+		if randi() % 10 < 3:
+			# for now we only have one enemy type, so this doesn't matter
+			# but later on we need to improve this to spawn lower type enemies with higher likely hood
+			var which = randi() % enemy_types.size()
+			var new_enemy = enemy_types[which]['enemyscene'].instance()
+			new_enemy.transform = spawn_point.global_transform * container_inverse
+			enemy_container_node.add_child(new_enemy)
 
 func get_neighbouring_room(p_room : Room, p_side : Vector2):
 	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
@@ -169,7 +191,29 @@ func _ready():
 			
 			filename = dir.get_next()
 		dir.list_dir_end()
-	
+
+	# load our enemy scenes
+	if dir.open(enemy_folder) == OK:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != '':
+			if dir.current_is_dir():
+				pass
+			elif !filename.ends_with('.tscn'):
+				pass
+			elif filename != 'EnemyCharacter.tscn':
+				var entry : Dictionary = Dictionary()
+				var enemy = load(enemy_folder + "/" + filename)
+				entry['enemyscene'] = enemy
+				# need to find a less wasteful way of doing this..
+				var temp = enemy.instance()
+				entry['weight'] = temp.weight
+				
+				enemy_types.push_back(entry)
+
+			filename = dir.get_next()
+		dir.list_dir_end()
+
 	# lets check out existing tiles
 	for child in get_children():
 		_add_entry(child)
