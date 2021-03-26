@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot-dungeon/characters/Character.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.9, 0.9, 0.9 )
@@ -17,3 +17,5 @@ shape = SubResource( 1 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

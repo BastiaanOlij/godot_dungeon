@@ -1,5 +1,7 @@
 extends Character
 
+class_name EnemyCharacter
+
 export (int) var weight = 1
 
 #############################################################################

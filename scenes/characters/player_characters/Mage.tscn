@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/characters/player_characters/PlayerCharacter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/godot-dungeon/characters/PlayerCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_mageBody.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_mageHair.mesh" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/Characters/gltf/character_mageHat.mesh" type="ArrayMesh" id=5]

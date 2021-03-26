@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/rooms/SpawnPoint.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot-dungeon/rooms/SpawnPoint.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true

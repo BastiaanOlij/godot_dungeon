@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/rooms/dungeon1/Room00.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Maze.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/godot-dungeon/maze/Maze.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/characters/player_characters/Mage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://scenes/characters/player_characters/Knight.tscn" type="PackedScene" id=5]
@@ -31,11 +31,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Mage" parent="PlayerCharacters" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+collision_layer = 2
+collision_mask = 7
 
 [node name="CameraRig" parent="PlayerCharacters/Mage" instance=ExtResource( 7 )]
 
 [node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
+collision_layer = 2
+collision_mask = 7
 
 [node name="EnemyCharacters" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

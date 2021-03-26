@@ -8,7 +8,6 @@ onready var animation_player : AnimationPlayer = get_node("Pivot/AnimationRig/Ro
 
 var current_move_path : Array = Array()
 var moving = false;
-const move_speed = 0.25
 
 var mesh_instance_nodes : Array = Array()
 
@@ -44,48 +43,36 @@ func unset_current_character():
 func pointer_cell_entered(p_cell : Cell):
 	_do_a_star(_in_cell, p_cell)
 
-func _move_character(new_pos : Vector3):
-	global_transform.origin = new_pos
-
-func _rotate_character(new_rotation : float):
-	$Pivot.rotation.y = new_rotation
-
-func perform_action():
-	moving = true
-	$Path.visible = false
-	print("Start move")
-	animation_player.play("Walk")
-
-	while !current_move_path.empty() and current_action_points > 0:
+func move_next():
+	if !current_move_path.empty() and current_action_points > 0:
 		var next_cell : Cell = current_move_path.pop_front()
 		current_action_points = current_action_points - 1
 		emit_signal("action_points_changed", current_action_points)
 
-		# determine our move
-		var move_from = global_transform.origin
-		var move_to = next_cell.global_transform.origin
-		var delta_move = (move_to - move_from)
-		var distance = delta_move.length()
-		tween_node.interpolate_method(self, "_move_character", move_from, move_to, distance * move_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-
-		var angle_from = $Pivot.rotation.y
-		var angle_to = Vector2(delta_move.x, delta_move.z).angle_to(Vector2(0, 1))
-		tween_node.interpolate_method(self, "_rotate_character", angle_from, angle_to, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-
-		# start our tween
-		tween_node.start()
-
-		# wait for our tween to finish
-		yield(tween_node, "tween_all_completed")
-
-	print("Finished move")
-
-	moving = false
-	if current_action_points == 0:
-		GlobalState.next_character()
+		# perform our move
+		tween_move_character(global_transform.origin, next_cell.global_transform.origin)
 	else:
-		# init our next move
-		_do_a_star(_in_cell, GlobalState.get_current_cell())
+		print("Finished move")
+
+		moving = false
+		if current_action_points == 0:
+			GlobalState.next_character()
+		else:
+			# init our next move
+			_do_a_star(_in_cell, GlobalState.get_current_cell())
+
+func perform_action():
+	moving = true
+	$Path.visible = false
+
+	print("Start move")
+	animation_player.play("Walk")
+
+	move_next()
+
+func _on_Tween_tween_all_completed():
+	move_next()
+
 
 func _do_a_star(from_cell: Cell, to_cell : Cell):
 	if moving:

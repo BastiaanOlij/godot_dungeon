@@ -57,14 +57,14 @@ func _get_lowest_cost() -> Cell:
 	return next
 
 # add more tries
-func _add_tries(p_prev : Cell, p_to_cell : Cell, p_current_cost : int, p_max_cost : int):
+func _add_tries(p_prev : Cell, p_to_cell : Cell, p_current_cost : int, p_max_cost : int, p_ignore_last_cell : bool):
 	var neighbours = p_prev.get_neighbouring_cells()
 	
 	for cell in neighbours:
 		if close_list.has(cell):
 			# we've already processed this fully
 			pass
-		elif cell.is_occupied():
+		elif cell.is_occupied() and (!p_ignore_last_cell or cell != p_to_cell):
 			# someone is already on this sell
 			pass
 		elif !open_list.has(cell):
@@ -80,17 +80,18 @@ func _add_tries(p_prev : Cell, p_to_cell : Cell, p_current_cost : int, p_max_cos
 			cell.set_f("*F: " + str(open_list[cell]['f']))
 
 # return our final result
-func _make_path_list(p_from_cell : Cell, p_to_cell : Cell) -> Array:
+func _make_path_list(p_from_cell : Cell, p_to_cell : Cell, p_ignore_last_cell : bool) -> Array:
 	var path_arr : Array = Array()
 	var cell : Cell = p_to_cell
 	
 	while (cell != p_from_cell):
-		path_arr.push_front(cell)
+		if !p_ignore_last_cell or cell != p_to_cell:
+			path_arr.push_front(cell)
 		cell = close_list[cell]
 	
 	return path_arr
 
-func do_astar(p_from_cell : Cell, p_to_cell : Cell, p_max_cost : int) -> Array:
+func do_astar(p_from_cell : Cell, p_to_cell : Cell, p_max_cost : int, p_ignore_last_cell : bool = false) -> Array:
 	var empty_arr : Array = Array()
 	
 	for cell in debug_cell_list:
@@ -98,7 +99,7 @@ func do_astar(p_from_cell : Cell, p_to_cell : Cell, p_max_cost : int) -> Array:
 	debug_cell_list = Array()
 	
 	# if our destination cell is not reachable, no need to do anything
-	if p_to_cell.is_occupied():
+	if p_to_cell.is_occupied() && !p_ignore_last_cell:
 		return empty_arr
 	elif p_from_cell == p_to_cell:
 		return empty_arr
@@ -120,13 +121,13 @@ func do_astar(p_from_cell : Cell, p_to_cell : Cell, p_max_cost : int) -> Array:
 		
 		# are we finished?
 		if next['cell'] == p_to_cell:
-			return _make_path_list(p_from_cell, p_to_cell)
+			return _make_path_list(p_from_cell, p_to_cell, p_ignore_last_cell)
 		
 		# remove from open list
 		open_list.erase(next['cell'])
 		
 		# Add new cells to try
-		_add_tries(next['cell'], p_to_cell, next['g'], p_max_cost)
+		_add_tries(next['cell'], p_to_cell, next['g'], p_max_cost, p_ignore_last_cell)
 	
 	return empty_arr
 

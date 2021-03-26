@@ -12,31 +12,37 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://scenes/rooms/Cell.gd"
+"path": "res://addons/godot-dungeon/rooms/Cell.gd"
 }, {
 "base": "Spatial",
 "class": "Character",
 "language": "GDScript",
-"path": "res://scenes/characters/Character.gd"
+"path": "res://addons/godot-dungeon/characters/Character.gd"
+}, {
+"base": "Character",
+"class": "EnemyCharacter",
+"language": "GDScript",
+"path": "res://addons/godot-dungeon/characters/EnemyCharacter.gd"
 }, {
 "base": "Spatial",
 "class": "Maze",
 "language": "GDScript",
-"path": "res://scenes/Maze.gd"
+"path": "res://addons/godot-dungeon/maze/Maze.gd"
 }, {
 "base": "Character",
 "class": "PlayerCharacter",
 "language": "GDScript",
-"path": "res://scenes/characters/player_characters/PlayerCharacter.gd"
+"path": "res://addons/godot-dungeon/characters/PlayerCharacter.gd"
 }, {
 "base": "Spatial",
 "class": "Room",
 "language": "GDScript",
-"path": "res://scenes/rooms/Room.gd"
+"path": "res://addons/godot-dungeon/rooms/Room.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
 "Character": "",
+"EnemyCharacter": "",
 "Maze": "",
 "PlayerCharacter": "",
 "Room": ""
@@ -50,9 +56,13 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GlobalState="*res://scripts/global_state.gd"
-MouseHandler="*res://scripts/mouse_handler.gd"
-AstarMaze="*res://scripts/astar.gd"
+GlobalState="*res://addons/godot-dungeon/autoload/global_state.gd"
+MouseHandler="*res://addons/godot-dungeon/autoload/mouse_handler.gd"
+AstarMaze="*res://addons/godot-dungeon/autoload/astar.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-dungeon/plugin.cfg" )
 
 [importer_defaults]
 
