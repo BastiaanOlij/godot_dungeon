@@ -9,7 +9,7 @@ export (int) var weight = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$Helpers.visible = false
 
 func _on_PlayerDetector_body_entered(body):
 	# print("Hello " + body.name)
