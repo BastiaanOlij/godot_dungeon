@@ -1,17 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/godot-dungeon/characters/EnemyCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/quaternius.com/Animated Monster Pack/Dragon.glb" type="PackedScene" id=2]
 [ext_resource path="res://scenes/characters/enemy_characters/Dragon.gd" type="Script" id=3]
-
-[sub_resource type="SphereShape" id=1]
-radius = 4.0
-
-[sub_resource type="SphereShape" id=2]
-radius = 8.0
+[ext_resource path="res://scenes/attacks/Fireball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/godot-dungeon/ai/AttackDetection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/godot-dungeon/ai/MoveDetection.tscn" type="PackedScene" id=6]
 
 [node name="Dragon" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+action_points = 3
 
 [node name="Dragon" parent="Pivot" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -19,19 +17,15 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 [node name="BoneAttachment" parent="Pivot/Dragon/DragonArmature/Skeleton" index="0"]
 transform = Transform( -1, -4.65661e-10, -1.23354e-06, -1.21968e-06, -0.14091, 0.990022, -1.7276e-07, 0.990022, 0.14091, 0.00268525, 2.98362, 0.914715 )
 
-[node name="AttackDetection" type="Area" parent="." index="3"]
-collision_layer = 0
-collision_mask = 2
+[node name="SpawnPoint" type="Position3D" parent="Pivot" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43066, 0.8543 )
 
-[node name="CollisionShape" type="CollisionShape" parent="AttackDetection" index="0"]
-shape = SubResource( 1 )
+[node name="AttackDetection" parent="AIBrain" index="0" instance=ExtResource( 5 )]
+spawn_point = NodePath("../../Pivot/SpawnPoint")
+attack_scene = ExtResource( 4 )
 
-[node name="MoveDetection" type="Area" parent="." index="4"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="MoveDetection" index="0"]
-shape = SubResource( 2 )
+[node name="MoveDetection" parent="AIBrain" index="1" instance=ExtResource( 6 )]
+min_steps = 2
 
 [connection signal="animation_finished" from="Pivot/Dragon/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

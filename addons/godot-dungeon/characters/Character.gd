@@ -12,6 +12,7 @@ export (float) var move_speed = 0.25
 onready var tween_node : Tween = get_node("Tween")
 var player_index : int = -1
 var current_action_points : int = 0
+onready var current_health_points = health_points
 
 #############################################################################
 # Character status
@@ -87,6 +88,22 @@ func tween_move_character(p_move_from : Vector3, p_move_to : Vector3):
 func _on_Tween_tween_all_completed():
 	# nothing to do by default, implement on subclass
 	pass # Replace with function body.
+
+#############################################################################
+# Character damage
+
+func take_damage(p_amount : int):
+	# TODO, add some roll the dice logic together with player stats to determine how effective the attack was...
+	current_health_points = current_health_points - p_amount
+	if current_health_points < 0:
+		# Remove our character from our player list, if we have no player controller character this will trigger game over...
+		GlobalState.remove_character(self)
+
+		# For now just queue bye bye character but we should add an animation for dying...
+		queue_free()
+	else:
+		# animation for hurt
+		pass
 
 #############################################################################
 

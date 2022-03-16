@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/godot-dungeon/attacks/Attack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/attacks/Fireball.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[node name="Fireball" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+damage = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Tween" type="Tween" parent="." index="1"]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

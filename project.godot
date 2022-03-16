@@ -10,6 +10,21 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "AIAction",
+"language": "GDScript",
+"path": "res://addons/godot-dungeon/ai/AIAction.gd"
+}, {
+"base": "Spatial",
+"class": "AIBrain",
+"language": "GDScript",
+"path": "res://addons/godot-dungeon/ai/AIBrain.gd"
+}, {
+"base": "Spatial",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://addons/godot-dungeon/attacks/Attack.gd"
+}, {
+"base": "Spatial",
 "class": "Cell",
 "language": "GDScript",
 "path": "res://addons/godot-dungeon/rooms/Cell.gd"
@@ -40,6 +55,9 @@ _global_script_classes=[ {
 "path": "res://addons/godot-dungeon/characters/PlayerCharacter.gd"
 } ]
 _global_script_class_icons={
+"AIAction": "",
+"AIBrain": "",
+"Attack": "",
 "Cell": "",
 "Character": "",
 "DungeonRoom": "",

@@ -87,6 +87,12 @@ func add_character(p_node : Character) -> int:
 
 	return characters.size() - 1 
 
+func remove_character(p_node : Character):
+	# remove this character
+	characters.erase(p_node)
+
+	# TODO check if we have any player characters left, if not, game over...
+
 func get_positions(p_include_player : bool, p_include_enemy : bool) -> Array:
 	var arr : Array = Array()
 	
