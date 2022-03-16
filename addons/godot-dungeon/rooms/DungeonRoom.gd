@@ -1,6 +1,6 @@
 extends Spatial
 
-class_name Room
+class_name DungeonRoom
 
 signal character_entered_room
 

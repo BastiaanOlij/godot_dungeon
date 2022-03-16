@@ -1,0 +1,1427 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://scenes/rooms/dungeon1/Room00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/rooms/dungeon1/Room01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/rooms/dungeon1/Room04.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/rooms/dungeon1/Room05.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/rooms/dungeon1/Room03.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/rooms/dungeon1/Room13.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/characters/player_characters/Mage.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/pt_sans/pt_sans_48pt.tres" type="DynamicFont" id=8]
+[ext_resource path="res://ForVideo01/1024px-Green_tick.svg.png" type="Texture" id=9]
+[ext_resource path="res://ForVideo01/1024px-No_sign.svg.png" type="Texture" id=10]
+[ext_resource path="res://ForVideo01/830px-Orange_question.svg.png" type="Texture" id=11]
+[ext_resource path="res://scenes/rooms/dungeon1/Room10.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/rooms/dungeon1/Room07.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+flags_ensure_correct_normals = true
+albedo_color = Color( 0.384314, 1, 0, 0.694118 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 12, 2, 12 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 0.584314, 0.4, 0, 0.709804 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+size = Vector3( 12, 2, 12 )
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="Environment" id=6]
+background_mode = 1
+background_color = Color( 1, 1, 1, 1 )
+background_energy = 0.2
+
+[sub_resource type="Animation" id=7]
+length = 60.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Characters/Mage:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -6.8, 0, -1 ), Vector3( -7, 0, -1 ), Vector3( -5, 0, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rooms/Room2/Green02:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rooms/Room4/Green01:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Rooms/Room3/Green03:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Rooms/Room6/Green04:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Rooms/Room/Green05:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Rooms/NewRoom01:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Rooms/NewRoom02:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Rooms/NewRoom03:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Pivot:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 9, 11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 3 ), Vector3( 0, 0, 3 ), Vector3( 16, 0, 3 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Pivot/Camera:translation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 9, 11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 30 ), Vector3( 0, 0, 30 ), Vector3( 0, 0, 20 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("CanvasLayer/Container:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 10, 30 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("CanvasLayer/Container/Open/Bits/0/new:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("CanvasLayer/Container/Open/Bits/0/room:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 15, 16, 23, 23.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CanvasLayer/Container/Open/Bits/1/new:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 11, 12.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CanvasLayer/Container/Open/Bits/1/room:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 11, 16.5, 23, 24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("CanvasLayer/Container/Open/Bits/2/new:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 11, 13.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("CanvasLayer/Container/Open/Bits/2/room:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 11, 17, 23, 24.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("CanvasLayer/Container/Open/Bits/3/new:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 11, 14.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CanvasLayer/Container/Open/Bits/3/room:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 11, 17.5, 23, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("CanvasLayer/Container/Walls/Bits2/4/new:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("CanvasLayer/Container/Walls/Bits2/4/room:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 11, 16, 23, 23.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("CanvasLayer/Container/Walls/Bits2/5/new:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 11, 12.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("CanvasLayer/Container/Walls/Bits2/5/room:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 11, 16.5, 23, 24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("CanvasLayer/Container/Walls/Bits2/6/new:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 11, 13.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("CanvasLayer/Container/Walls/Bits2/6/room:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 11, 17, 23, 24.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("CanvasLayer/Container/Walls/Bits2/7/new:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 11, 14.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("CanvasLayer/Container/Walls/Bits2/7/room:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 11, 17.5, 23, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Tick:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 11, 11.5, 28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Cross:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 11, 12.5, 28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Question1:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 11, 13.5, 28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Question2:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 11, 14.5, 28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Rooms/CheckRoom1:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 15, 16, 23 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Rooms/CheckRoom2:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 23, 28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("CanvasLayer/Container/Open/Bits/0/room:text")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0, 23.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "0", "1" ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("CanvasLayer/Container/Open/Bits/1/room:text")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("CanvasLayer/Container/Open/Bits/2/room:text")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0, 24.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "0", "1" ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("CanvasLayer/Container/Open/Bits/3/room:text")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0, 25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "1", "0" ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("CanvasLayer/Container/Walls/Bits2/4/room:text")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0, 23.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "1", "0" ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("CanvasLayer/Container/Walls/Bits2/5/room:text")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "1	" ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("CanvasLayer/Container/Walls/Bits2/6/room:text")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0, 24.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "1", "0" ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("CanvasLayer/Container/Walls/Bits2/7/room:text")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0, 25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "0", "1" ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("CanvasLayer/Container/VBoxContainer/Check:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0, 11.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("CanvasLayer/Container/VBoxContainer/Room:visible")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("CanvasLayer/Container/VBoxContainer/And:visible")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0, 19 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("CanvasLayer/Container/Open/Bits/0/and:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("CanvasLayer/Container/Open/Bits/0/and:text")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 0, 26 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "0", "1" ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("CanvasLayer/Container/Open/Bits/1/and:text")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("CanvasLayer/Container/Open/Bits/1/and:visible")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("CanvasLayer/Container/Open/Bits/2/and:text")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("CanvasLayer/Container/Open/Bits/2/and:visible")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/51/type = "value"
+tracks/51/path = NodePath("CanvasLayer/Container/Open/Bits/3/and:text")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/52/type = "value"
+tracks/52/path = NodePath("CanvasLayer/Container/Open/Bits/3/and:visible")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("CanvasLayer/Container/Walls/Bits2/4/and:text")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("CanvasLayer/Container/Walls/Bits2/4/and:visible")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("CanvasLayer/Container/Walls/Bits2/5/and:text")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "1	" ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("CanvasLayer/Container/Walls/Bits2/5/and:visible")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/57/type = "value"
+tracks/57/path = NodePath("CanvasLayer/Container/Walls/Bits2/6/and:text")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/58/type = "value"
+tracks/58/path = NodePath("CanvasLayer/Container/Walls/Bits2/6/and:visible")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/59/type = "value"
+tracks/59/path = NodePath("CanvasLayer/Container/Walls/Bits2/7/and:text")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "0" ]
+}
+tracks/60/type = "value"
+tracks/60/path = NodePath("CanvasLayer/Container/Walls/Bits2/7/and:visible")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/keys = {
+"times": PoolRealArray( 0, 19, 23, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/61/type = "value"
+tracks/61/path = NodePath("BigCross:visible")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/keys = {
+"times": PoolRealArray( 0, 20, 23 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/62/type = "value"
+tracks/62/path = NodePath("BigTick:visible")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/keys = {
+"times": PoolRealArray( 0, 27, 28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/63/type = "value"
+tracks/63/path = NodePath("Rooms/NewRoom01/Room:visible")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/keys = {
+"times": PoolRealArray( 0, 28 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/64/type = "value"
+tracks/64/path = NodePath("CanvasLayer/Container:modulate")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/keys = {
+"times": PoolRealArray( 10, 11.5, 28, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.95 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="PlaneMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 11 )
+
+[node name="mapextend" type="Spatial"]
+
+[node name="Rooms" type="Spatial" parent="."]
+
+[node name="Room1" parent="Rooms" instance=ExtResource( 1 )]
+
+[node name="Room2" parent="Rooms" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="Green02" type="MeshInstance" parent="Rooms/Room2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Room7" parent="Rooms" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -24 )
+
+[node name="Room3" parent="Rooms" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12 )
+
+[node name="Green03" type="MeshInstance" parent="Rooms/Room3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Room4" parent="Rooms" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12 )
+
+[node name="Green01" type="MeshInstance" parent="Rooms/Room4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Room6" parent="Rooms" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+
+[node name="Green04" type="MeshInstance" parent="Rooms/Room6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Room5" parent="Rooms" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24 )
+
+[node name="Room" parent="Rooms" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12 )
+
+[node name="Green05" type="MeshInstance" parent="Rooms/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="NewRoom01" type="MeshInstance" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Room" parent="Rooms/NewRoom01" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="NewRoom02" type="MeshInstance" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 12 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="NewRoom03" type="MeshInstance" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CheckRoom1" parent="Rooms" instance=ExtResource( 13 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28, 0, 7 )
+visible = false
+
+[node name="CheckRoom2" parent="Rooms" instance=ExtResource( 12 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28, 0, 7 )
+visible = false
+
+[node name="Lightson01" type="StaticBody" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 7 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Rooms/Lightson01"]
+shape = SubResource( 5 )
+
+[node name="Lightson02" type="StaticBody" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -14 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Rooms/Lightson02"]
+shape = SubResource( 5 )
+
+[node name="Lightson03" type="StaticBody" parent="Rooms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -14 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Rooms/Lightson03"]
+shape = SubResource( 5 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965925, 0, -0.965925, 0.258819, 16, 0, 3 )
+
+[node name="Camera" type="Camera" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="Characters" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="Mage" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ExtendMap"
+anims/ExtendMap = SubResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="HBoxContainer" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -464.0
+margin_top = 100.0
+margin_right = 6.0
+margin_bottom = 540.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Container"]
+margin_right = 122.0
+margin_bottom = 440.0
+
+[node name="Spacer" type="Label" parent="CanvasLayer/Container/VBoxContainer"]
+margin_right = 122.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+
+[node name="Bits" type="Label" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 67.0
+margin_right = 122.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Bits"
+align = 2
+
+[node name="Check" type="Label" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 134.0
+margin_right = 122.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Check"
+align = 2
+
+[node name="Room" type="Label" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 201.0
+margin_right = 122.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Room"
+align = 2
+
+[node name="And" type="Label" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 268.0
+margin_right = 122.0
+margin_bottom = 331.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "And"
+align = 2
+
+[node name="Spacer3" type="Control" parent="CanvasLayer/Container"]
+margin_left = 126.0
+margin_right = 136.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Open" type="VBoxContainer" parent="CanvasLayer/Container"]
+margin_left = 140.0
+margin_right = 260.0
+margin_bottom = 440.0
+
+[node name="Open" type="Label" parent="CanvasLayer/Container/Open"]
+margin_right = 120.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Open	"
+
+[node name="Bits" type="HBoxContainer" parent="CanvasLayer/Container/Open"]
+margin_top = 67.0
+margin_right = 120.0
+margin_bottom = 331.0
+
+[node name="0" type="VBoxContainer" parent="CanvasLayer/Container/Open/Bits"]
+margin_right = 27.0
+margin_bottom = 264.0
+
+[node name="bit0" type="Label" parent="CanvasLayer/Container/Open/Bits/0"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Open/Bits/0"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Open/Bits/0"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Open/Bits/0"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="1" type="VBoxContainer" parent="CanvasLayer/Container/Open/Bits"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 264.0
+
+[node name="bit1" type="Label" parent="CanvasLayer/Container/Open/Bits/1"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1	"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Open/Bits/1"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Open/Bits/1"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Open/Bits/1"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="2" type="VBoxContainer" parent="CanvasLayer/Container/Open/Bits"]
+margin_left = 62.0
+margin_right = 89.0
+margin_bottom = 264.0
+
+[node name="bit2" type="Label" parent="CanvasLayer/Container/Open/Bits/2"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "2"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Open/Bits/2"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Open/Bits/2"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Open/Bits/2"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="3" type="VBoxContainer" parent="CanvasLayer/Container/Open/Bits"]
+margin_left = 93.0
+margin_right = 120.0
+margin_bottom = 264.0
+
+[node name="bit3" type="Label" parent="CanvasLayer/Container/Open/Bits/3"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "3	"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Open/Bits/3"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Open/Bits/3"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Open/Bits/3"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Spacer" type="Control" parent="CanvasLayer/Container"]
+margin_left = 264.0
+margin_right = 274.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Walls" type="VBoxContainer" parent="CanvasLayer/Container"]
+margin_left = 278.0
+margin_right = 398.0
+margin_bottom = 440.0
+
+[node name="Walls" type="Label" parent="CanvasLayer/Container/Walls"]
+margin_right = 120.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.192157, 0.352941, 0.901961, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Walls	"
+
+[node name="Bits2" type="HBoxContainer" parent="CanvasLayer/Container/Walls"]
+margin_top = 67.0
+margin_right = 120.0
+margin_bottom = 331.0
+
+[node name="4" type="VBoxContainer" parent="CanvasLayer/Container/Walls/Bits2"]
+margin_right = 27.0
+margin_bottom = 264.0
+
+[node name="bit4" type="Label" parent="CanvasLayer/Container/Walls/Bits2/4"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "4"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Walls/Bits2/4"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Walls/Bits2/4"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Walls/Bits2/4"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="5" type="VBoxContainer" parent="CanvasLayer/Container/Walls/Bits2"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 264.0
+
+[node name="bit5" type="Label" parent="CanvasLayer/Container/Walls/Bits2/5"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "5		"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Walls/Bits2/5"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Walls/Bits2/5"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1	"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Walls/Bits2/5"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1	"
+
+[node name="6" type="VBoxContainer" parent="CanvasLayer/Container/Walls/Bits2"]
+margin_left = 62.0
+margin_right = 89.0
+margin_bottom = 264.0
+
+[node name="bit6" type="Label" parent="CanvasLayer/Container/Walls/Bits2/6"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "6	"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Walls/Bits2/6"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Walls/Bits2/6"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Walls/Bits2/6"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="7" type="VBoxContainer" parent="CanvasLayer/Container/Walls/Bits2"]
+margin_left = 93.0
+margin_right = 120.0
+margin_bottom = 264.0
+
+[node name="bit7" type="Label" parent="CanvasLayer/Container/Walls/Bits2/7"]
+margin_right = 27.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "7	"
+
+[node name="new" type="Label" parent="CanvasLayer/Container/Walls/Bits2/7"]
+margin_top = 67.0
+margin_right = 27.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="room" type="Label" parent="CanvasLayer/Container/Walls/Bits2/7"]
+margin_top = 134.0
+margin_right = 27.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+
+[node name="and" type="Label" parent="CanvasLayer/Container/Walls/Bits2/7"]
+margin_top = 201.0
+margin_right = 27.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/Container"]
+margin_left = 402.0
+margin_right = 412.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Tick" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5, 1 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="BigTick" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26, 5, 7 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Cross" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 5, -4 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 10 )
+
+[node name="BigCross" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26, 5, 7 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 10 )
+
+[node name="Question1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 5, 1 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 11 )
+
+[node name="Question2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 5, 6 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 11 )

@@ -62,7 +62,7 @@ func update_visibility():
 		if room.visible != is_visible:
 			room.visible = is_visible
 
-func character_entered_room(p_room : Room):
+func character_entered_room(p_room : DungeonRoom):
 	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
 	
 	for side in expand_sides:
@@ -119,7 +119,7 @@ func character_entered_room(p_room : Room):
 	
 	update_visibility();
 
-func _add_entry(p_room : Room):
+func _add_entry(p_room : DungeonRoom):
 	var entry : Dictionary = Dictionary()
 	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
 	entry['node'] = p_room
@@ -141,7 +141,7 @@ func _add_entry(p_room : Room):
 	
 	p_room.connect("character_entered_room", self, "character_entered_room")
 
-func _spawn_enemies(p_room : Room):
+func _spawn_enemies(p_room : DungeonRoom):
 	if enemy_types.size() == 0:
 		return
 
@@ -158,7 +158,7 @@ func _spawn_enemies(p_room : Room):
 			new_enemy.transform = spawn_point.global_transform * container_inverse
 			enemy_container_node.add_child(new_enemy)
 
-func get_neighbouring_room(p_room : Room, p_side : Vector2):
+func get_neighbouring_room(p_room : DungeonRoom, p_side : Vector2):
 	var pos : Vector2 = Vector2(round(p_room.transform.origin.x / 12.0), round(p_room.transform.origin.z / 12.0))
 	pos = pos + p_side
 	if maze.has(pos):
@@ -178,7 +178,7 @@ func _ready():
 				pass
 			elif !filename.ends_with('.tscn'):
 				pass
-			elif filename != 'Room.tscn':
+			elif filename != 'DungeonRoom.tscn':
 				var entry : Dictionary = Dictionary()
 				var room = load(rooms_folder + "/" + filename)
 				entry['roomscene'] = room

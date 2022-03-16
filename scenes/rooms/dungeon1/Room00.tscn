@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://addons/godot-dungeon/rooms/Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/godot-dungeon/rooms/DungeonRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/rooms/helpers/back.tres" type="CubeMesh" id=2]
 [ext_resource path="res://assets/KayKit/Dungeon Pack/Models/gltf/tileBrickB_large.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://scenes/rooms/objects/WallTorch.tscn" type="PackedScene" id=4]

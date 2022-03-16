@@ -31,15 +31,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Mage" parent="PlayerCharacters" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
-collision_layer = 2
-collision_mask = 7
 
 [node name="CameraRig" parent="PlayerCharacters/Mage" instance=ExtResource( 7 )]
 
 [node name="Knight" parent="PlayerCharacters" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
-collision_layer = 2
-collision_mask = 7
 
 [node name="EnemyCharacters" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

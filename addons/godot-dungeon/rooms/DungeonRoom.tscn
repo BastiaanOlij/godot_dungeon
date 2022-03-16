@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://addons/godot-dungeon/rooms/Room.gd" type="Script" id=1]
-[ext_resource path="res://addons/godot-dungeon/rooms/Cell.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/godot-dungeon/assets/top.png" type="Texture" id=3]
-[ext_resource path="res://addons/godot-dungeon/assets/right.png" type="Texture" id=4]
+[ext_resource path="res://addons/godot-dungeon/rooms/DungeonRoom.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot-dungeon/assets/top.png" type="Texture" id=2]
+[ext_resource path="res://addons/godot-dungeon/assets/right.png" type="Texture" id=3]
+[ext_resource path="res://addons/godot-dungeon/assets/left.png" type="Texture" id=4]
 [ext_resource path="res://addons/godot-dungeon/assets/bottom.png" type="Texture" id=5]
-[ext_resource path="res://addons/godot-dungeon/assets/left.png" type="Texture" id=6]
+[ext_resource path="res://addons/godot-dungeon/rooms/Cell.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 6, 2, 6 )
@@ -16,17 +16,17 @@ size = Vector2( 4, 4 )
 [sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 6 )
+albedo_texture = ExtResource( 4 )
 
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 3 )
+albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource( 3 )
 
 [sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
@@ -46,115 +46,115 @@ shape = SubResource( 1 )
 [node name="Grid" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="Cell01x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5 )
 visible = false
 
-[node name="Cell01x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5 )
 
-[node name="Cell01x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5 )
 
-[node name="Cell01x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5 )
 
-[node name="Cell01x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5 )
 
-[node name="Cell01x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell01x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5 )
 visible = false
 
-[node name="Cell02x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3 )
 
-[node name="Cell02x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3 )
 
-[node name="Cell02x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3 )
 
-[node name="Cell02x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3 )
 
-[node name="Cell02x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3 )
 
-[node name="Cell02x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell02x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3 )
 
-[node name="Cell03x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1 )
 
-[node name="Cell03x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1 )
 
-[node name="Cell03x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1 )
 
-[node name="Cell03x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
 
-[node name="Cell03x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1 )
 
-[node name="Cell03x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell03x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1 )
 
-[node name="Cell04x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1 )
 
-[node name="Cell04x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1 )
 
-[node name="Cell04x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1 )
 
-[node name="Cell04x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
 
-[node name="Cell04x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1 )
 
-[node name="Cell04x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell04x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1 )
 
-[node name="Cell05x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3 )
 
-[node name="Cell05x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3 )
 
-[node name="Cell05x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3 )
 
-[node name="Cell05x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3 )
 
-[node name="Cell05x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3 )
 
-[node name="Cell05x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell05x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3 )
 
-[node name="Cell06x01" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x01" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5 )
 visible = false
 
-[node name="Cell06x02" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x02" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5 )
 
-[node name="Cell06x03" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x03" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5 )
 
-[node name="Cell06x04" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x04" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5 )
 
-[node name="Cell06x05" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x05" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5 )
 
-[node name="Cell06x06" parent="Grid" instance=ExtResource( 2 )]
+[node name="Cell06x06" parent="Grid" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
 visible = false
 

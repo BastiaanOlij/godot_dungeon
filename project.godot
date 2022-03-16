@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-dungeon/characters/Character.gd"
 }, {
+"base": "Spatial",
+"class": "DungeonRoom",
+"language": "GDScript",
+"path": "res://addons/godot-dungeon/rooms/DungeonRoom.gd"
+}, {
 "base": "Character",
 "class": "EnemyCharacter",
 "language": "GDScript",
@@ -33,19 +38,14 @@ _global_script_classes=[ {
 "class": "PlayerCharacter",
 "language": "GDScript",
 "path": "res://addons/godot-dungeon/characters/PlayerCharacter.gd"
-}, {
-"base": "Spatial",
-"class": "Room",
-"language": "GDScript",
-"path": "res://addons/godot-dungeon/rooms/Room.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
 "Character": "",
+"DungeonRoom": "",
 "EnemyCharacter": "",
 "Maze": "",
-"PlayerCharacter": "",
-"Room": ""
+"PlayerCharacter": ""
 }
 
 [application]
@@ -1122,10 +1122,10 @@ scene={
 [layer_names]
 
 3d_render/layer_1="Environment"
+3d_render/layer_20="UI"
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Friendly"
 3d_physics/layer_3="Enemy"
-3d_render/layer_20="UI"
 3d_physics/layer_20="UI"
 
 [rendering]
