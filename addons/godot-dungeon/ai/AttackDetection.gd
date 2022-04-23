@@ -1,6 +1,8 @@
 tool
 extends AIAction
 
+signal perform_attack
+
 export var radius = 4.0 setget set_radius
 export var attack_cost = 2
 export var spawn_point : NodePath
@@ -40,6 +42,8 @@ func process_action(p_character : Character):
 		add_child(attack_node)
 		attack_node.connect("attack_finished", self, "_attack_finished")
 		attack_node.perform_attack(in_range[0], spawn_point_node.global_transform)
+
+		emit_signal("perform_attack")
 	
 	return
 

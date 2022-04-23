@@ -14,8 +14,11 @@ action_points = 3
 [node name="Dragon" parent="Pivot" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
+[node name="Skeleton" parent="Pivot/Dragon/DragonArmature" index="0"]
+bones/5/bound_children = [ NodePath("BoneAttachment") ]
+
 [node name="BoneAttachment" parent="Pivot/Dragon/DragonArmature/Skeleton" index="0"]
-transform = Transform( -1, -4.65661e-10, -1.23354e-06, -1.21968e-06, -0.14091, 0.990022, -1.7276e-07, 0.990022, 0.14091, 0.00268525, 2.98362, 0.914715 )
+transform = Transform( -1, -1.16415e-09, -1.23295e-06, -1.22027e-06, -0.14091, 0.990023, -1.72993e-07, 0.990022, 0.14091, 0.00268525, 2.98362, 0.914716 )
 
 [node name="SpawnPoint" type="Position3D" parent="Pivot" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43066, 0.8543 )
